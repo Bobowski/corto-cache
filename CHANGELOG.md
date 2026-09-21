@@ -4,6 +4,17 @@ All notable changes to Corto Cache are documented in this file.
 
 The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 0.1.1
+
+### Added
+
+- Linux aarch64 wheels (manylinux and musllinux), built on a native
+  GitHub ARM runner.
+
+### Fixed
+
+- CI runs on `main`. The README badge tracks that workflow.
+
 ## 0.1.0
 
 First public release.

@@ -79,9 +79,9 @@ There is no public frequency peek.
 
 ## Install
 
-CPython 3.14. Wheels cover Linux x86_64 (glibc and musl), macOS (arm64,
-x86_64), and Windows AMD64. There is no Linux aarch64 wheel yet — that
-install compiles the sdist and needs a C compiler plus Cython.
+CPython 3.14. Wheels cover Linux x86_64 and aarch64 (glibc and musl),
+macOS (arm64, x86_64), and Windows AMD64. A source build needs a C
+compiler and Cython.
 
 ```text
 pip install corto-cache
