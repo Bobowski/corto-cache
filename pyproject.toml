@@ -22,6 +22,12 @@ classifiers = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/Bobowski/corto-cache"
+Repository = "https://github.com/Bobowski/corto-cache"
+Issues = "https://github.com/Bobowski/corto-cache/issues"
+Changelog = "https://github.com/Bobowski/corto-cache/blob/main/CHANGELOG.md"
+
 [build-system]
 requires = ["setuptools>=74.1", "wheel", "Cython>=3.1.4"]
 build-backend = "setuptools.build_meta"
