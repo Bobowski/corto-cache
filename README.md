@@ -1,5 +1,7 @@
 # Corto Cache
 
+[![CI](https://github.com/Bobowski/corto-cache/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Bobowski/corto-cache/actions/workflows/ci.yml)
+
 ```text
 pip install corto-cache
 ```
@@ -77,8 +79,15 @@ There is no public frequency peek.
 
 ## Install
 
-CPython 3.14. CI builds wheels for Linux x86_64, macOS (arm64, x86_64), and
-Windows AMD64. A source build needs a C compiler and Cython.
+CPython 3.14. Wheels cover Linux x86_64 (glibc and musl), macOS (arm64,
+x86_64), and Windows AMD64. There is no Linux aarch64 wheel yet — that
+install compiles the sdist and needs a C compiler plus Cython.
+
+```text
+pip install corto-cache
+```
+
+From a clone:
 
 ```text
 uv sync
