@@ -1,0 +1,102 @@
+[project]
+name = "corto-cache"
+version = "0.1.0"
+description = "Corto Cache: Cython Window-TinyLFU memoize, as a small lru_cache stand-in."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Adam Bobowski", email = "adam.bobowski@wratilabs.com" }
+]
+keywords = ["cache", "memoize", "tinylfu", "lfu", "cython"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Cython",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=74.1", "wheel", "Cython>=3.1.4"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+corto = ["py.typed", "*.pyi"]
+
+[tool.setuptools.exclude-package-data]
+corto = ["*.c", "*.pyx", "*.html"]
+
+[dependency-groups]
+dev = [
+    "cython>=3.1.4",
+    "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "ruff>=0.12.8",
+]
+bench = [
+    "cachebox>=6.2.4",
+    "cachetools>=6.0.0",
+    "moka-py>=0.3.0",
+    "theine>=2.0.0",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.cibuildwheel]
+build = "cp314-*"
+skip = "pp*"
+test-requires = ["pytest"]
+test-command = "pytest {project}/tests"
+# 3.14 free-thread wheels are a later job. The mutex is already on.
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64"]
+
+[tool.cibuildwheel.macos]
+archs = ["arm64", "x86_64"]
+
+[tool.cibuildwheel.windows]
+archs = ["AMD64"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.pyright]
+pythonVersion = "3.14"
+typeCheckingMode = "basic"
+reportPrivateUsage = false
+reportMissingTypeStubs = false
+include = ["src"]
+exclude = ["**/.venv", "**/__pycache__", "benchmarks"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+src = ["src", "tests", "benchmarks"]
+exclude = [".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "W", "I", "UP", "B", "SIM", "RUF", "PT"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.isort]
+known-first-party = ["corto", "tests"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

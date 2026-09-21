@@ -1,0 +1,14 @@
+src/corto/*.c
+src/corto/*.html
+src/corto/*.so
+src/corto/*.pyd
+*.egg-info/
+corto_cache-*/
+.venv/
+build/
+dist/
+wheelhouse/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]

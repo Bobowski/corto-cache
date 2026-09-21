@@ -1,0 +1,12 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include setup.py
+include src/corto/_core.pyx
+include src/corto/_core.pyi
+include src/corto/py.typed
+graft tests
+global-exclude *.so *.pyd *.html *.pyc
+prune tests/__pycache__
+prune src/*.egg-info
+recursive-exclude * *.egg-info
